@@ -1,0 +1,24 @@
+mode: set
+go-postgres/mysql.go:18.89,20.16 2 0
+go-postgres/mysql.go:24.2,25.16 2 0
+go-postgres/mysql.go:29.2,32.29 3 0
+go-postgres/mysql.go:20.16,22.3 1 0
+go-postgres/mysql.go:25.16,27.3 1 0
+go-postgres/mysql.go:36.30,38.2 1 1
+go-postgres/mysql.go:41.67,48.16 5 1
+go-postgres/mysql.go:51.2,51.18 1 1
+go-postgres/mysql.go:48.16,50.3 1 1
+go-postgres/mysql.go:55.56,61.16 5 1
+go-postgres/mysql.go:65.2,67.18 2 1
+go-postgres/mysql.go:79.2,79.19 1 1
+go-postgres/mysql.go:61.16,63.3 1 1
+go-postgres/mysql.go:67.18,77.3 3 1
+go-postgres/mysql.go:83.57,89.16 5 1
+go-postgres/mysql.go:92.2,95.12 3 1
+go-postgres/mysql.go:89.16,91.3 1 1
+go-postgres/mysql.go:99.57,105.16 5 1
+go-postgres/mysql.go:108.2,111.12 3 1
+go-postgres/mysql.go:105.16,107.3 1 1
+go-postgres/mysql.go:115.46,121.16 5 1
+go-postgres/mysql.go:124.2,127.12 3 1
+go-postgres/mysql.go:121.16,123.3 1 1
