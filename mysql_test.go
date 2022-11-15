@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 	"testing"
 
@@ -226,4 +227,18 @@ func TestDeleteError(t *testing.T) {
 
 	err := repo.Delete(u.ID)
 	assert.Error(t, err)
+}
+
+func TestDeleteError2(t *testing.T) {
+	db, mock := NewMock()
+	repo := &repository{db}
+	defer func() {
+		repo.Close()
+	}()
+
+	query := "DELETE FROM user WERE id = \\?"
+
+	prep := mock.ExpectPrepare(query)
+	prep.ExpectExec().WithArgs(u.ID).WillReturnError(fmt.Errorf("some error"))
+
 }
