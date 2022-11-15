@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/google/uuid"
 	repo "github.com/moemoe89/go-unit-test-sql/repository"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -15,13 +14,6 @@ import (
 
 type repository struct {
 	db *sql.DB
-}
-
-var temp = &repo.UserModel{
-	ID:    uuid.New().String(),
-	Name:  "sanjai",
-	Email: "sanjai@mail.com",
-	Phone: "9488900582",
 }
 
 // NewRepository will create a variable that represent the Repository struct
