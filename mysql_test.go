@@ -1,9 +1,7 @@
 package main
 
 import (
-	"database/sql"
 	"fmt"
-	"log"
 	"testing"
 
 	r "github.com/moemoe89/go-unit-test-sql/repository"
@@ -20,14 +18,14 @@ var u = &r.UserModel{
 	Phone: "9488900582",
 }
 
-func NewMock() (*sql.DB, sqlmock.Sqlmock) {
-	db, mock, err := sqlmock.New()
-	if err != nil {
-		log.Fatalf("an error '%s' was not expected when opening a stub database connection", err)
-	}
+// func NewMock() (*sql.DB, sqlmock.Sqlmock) {
+// 	db, mock, err := sqlmock.New()
+// 	if err != nil {
+// 		log.Fatalf("an error '%s' was not expected when opening a stub database connection", err)
+// 	}
 
-	return db, mock
-}
+// 	return db, mock
+// }
 
 func TestFindByID(t *testing.T) {
 	db, mock := NewMock()
@@ -197,21 +195,21 @@ func TestUpdateErr(t *testing.T) {
 	assert.Error(t, err)
 }
 
-func TestDelete(t *testing.T) {
-	db, mock := NewMock()
-	repo := &repository{db}
-	defer func() {
-		repo.Close()
-	}()
+// func TestDelete(t *testing.T) {
+// 	db, mock := NewMock()
+// 	repo := &repository{db}
+// 	defer func() {
+// 		repo.Close()
+// 	}()
 
-	query := "DELETE FROM users WHERE id = \\?"
+// 	query := "DELETE FROM users WHERE id = \\?"
 
-	prep := mock.ExpectPrepare(query)
-	prep.ExpectExec().WithArgs(u.ID).WillReturnResult(sqlmock.NewResult(0, 1))
+// 	prep := mock.ExpectPrepare(query)
+// 	prep.ExpectExec().WithArgs(u.ID).WillReturnResult(sqlmock.NewResult(0, 1))
 
-	err := repo.Delete(u.ID)
-	assert.NoError(t, err)
-}
+// 	err := repo.Delete(u.ID)
+// 	assert.NoError(t, err)
+// }
 
 func TestDeleteError(t *testing.T) {
 	db, mock := NewMock()
@@ -239,5 +237,9 @@ func TestDeleteError2(t *testing.T) {
 	query := "DELETE FROM user WERE id = \\?"
 
 	mock.ExpectExec(query).WithArgs(u.ID).WillReturnError(fmt.Errorf("some error"))
+	err := repo.Delete(u.ID)
+
+	assert.Error(t, err)
+	assert.Equal(t, err, fmt.Errorf("some error"))
 
 }
