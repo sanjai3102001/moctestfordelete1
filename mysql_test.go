@@ -1,7 +1,9 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
+	"log"
 	"testing"
 
 	r "github.com/moemoe89/go-unit-test-sql/repository"
@@ -18,14 +20,14 @@ var u = &r.UserModel{
 	Phone: "9488900582",
 }
 
-// func NewMock() (*sql.DB, sqlmock.Sqlmock) {
-// 	db, mock, err := sqlmock.New()
-// 	if err != nil {
-// 		log.Fatalf("an error '%s' was not expected when opening a stub database connection", err)
-// 	}
+func NewMock() (*sql.DB, sqlmock.Sqlmock) {
+	db, mock, err := sqlmock.New()
+	if err != nil {
+		log.Fatalf("an error '%s' was not expected when opening a stub database connection", err)
+	}
 
-// 	return db, mock
-// }
+	return db, mock
+}
 
 func TestFindByID(t *testing.T) {
 	db, mock := NewMock()

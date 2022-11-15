@@ -5,10 +5,8 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	"log"
 	"time"
 
-	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/google/uuid"
 	repo "github.com/moemoe89/go-unit-test-sql/repository"
 
@@ -140,32 +138,4 @@ func (r *repository) Delete(id string) error {
 	fmt.Println(err)
 	// err = errors.New("some error")
 	return err
-}
-
-func main() {
-	var repos *repository
-	// repos.Delete("1")
-	err := repos.Delete(temp.ID)
-	fmt.Println(err)
-	// ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	// defer cancel()
-
-	// query := "DELETE FROM users WHRE id = ?"
-	// stmt, err := repo.db.PrepareContext(ctx, query)
-	// if err != nil {
-	// 	return err
-	// }
-	// defer stmt.Close()
-
-	// _, err = stmt.ExecContext(ctx, temp.ID)
-	// fmt.Println(err)
-}
-
-func NewMock() (*sql.DB, sqlmock.Sqlmock) {
-	db, mock, err := sqlmock.New()
-	if err != nil {
-		log.Fatalf("an error '%s' was not expected when opening a stub database connection", err)
-	}
-
-	return db, mock
 }
