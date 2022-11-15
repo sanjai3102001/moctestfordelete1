@@ -128,10 +128,10 @@ func (r *repository) Delete(id string) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
-	query := "DELETE FROM users WHRE id = ?"
+	query := "DELETE FROM users WHERE id = ?"
 	stmt, err := r.db.PrepareContext(ctx, query)
 	if err != nil {
-		err = errors.New("some error")
+		err = errors.New("querry mismatch error")
 		return err
 	}
 	defer stmt.Close()

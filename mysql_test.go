@@ -236,10 +236,10 @@ func TestDeleteError2(t *testing.T) {
 
 	query := "DELETE FROM user WERE id = \\?"
 
-	mock.ExpectExec(query).WithArgs(u.ID).WillReturnError(fmt.Errorf("some error"))
+	mock.ExpectExec(query).WithArgs(u.ID).WillReturnError(fmt.Errorf("querry mismatch error"))
 	err := repo.Delete(u.ID)
 
 	assert.Error(t, err)
-	assert.Equal(t, err, fmt.Errorf("some error"))
+	assert.Equal(t, err, fmt.Errorf("querry mismatch error"))
 
 }
