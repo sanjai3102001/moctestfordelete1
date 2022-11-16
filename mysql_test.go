@@ -197,21 +197,21 @@ func TestUpdateErr(t *testing.T) {
 	assert.Error(t, err)
 }
 
-// func TestDelete(t *testing.T) {
-// 	db, mock := NewMock()
-// 	repo := &repository{db}
-// 	defer func() {
-// 		repo.Close()
-// 	}()
+func TestDelete(t *testing.T) {
+	db, mock := NewMock()
+	repo := &repository{db}
+	defer func() {
+		repo.Close()
+	}()
 
-// 	query := "DELETE FROM users WHERE id = \\?"
+	query := "DELETE FROM users WHERE id = \\?"
 
-// 	prep := mock.ExpectPrepare(query)
-// 	prep.ExpectExec().WithArgs(u.ID).WillReturnResult(sqlmock.NewResult(0, 1))
+	prep := mock.ExpectPrepare(query)
+	prep.ExpectExec().WithArgs(u.ID).WillReturnResult(sqlmock.NewResult(0, 1))
 
-// 	err := repo.Delete(u.ID)
-// 	assert.NoError(t, err)
-// }
+	err := repo.Delete(u.ID)
+	assert.NoError(t, err)
+}
 
 func TestDeleteError(t *testing.T) {
 	db, mock := NewMock()

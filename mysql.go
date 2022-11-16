@@ -128,6 +128,5 @@ func (r *repository) Delete(id string) error {
 
 	_, err = stmt.ExecContext(ctx, id)
 	fmt.Println(err)
-	// err = errors.New("some error")
 	return err
 }
